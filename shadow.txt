@@ -1,0 +1,61 @@
+#pragma warning(disable:4996)
+#include <stdio.h>
+#include <stdlib.h>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int main(void) {
+	FILE *fp1, *fp2;
+	fp1 = fopen("shadow.inp", "r");
+	fp2 = fopen("shadow.out", "w");
+
+	int T, n;
+	int max = 0;
+	int min = 10001;
+	int a[10000] = { 0 };
+	int sum = 0;
+	int fin = 0;
+	int num = 0;
+
+	fscanf(fp1, "%d", &T);
+	for (int i = 0; i < T; i++) {
+		fscanf(fp1, "%d", &n);
+		sum = 0;
+		for (int j = 0; j < n; j++) {
+			fscanf(fp1, "%d", &a[j]);
+		}
+		for (int j = 0; j < n; j++) {
+			if (max < a[j]) {
+				max = a[j];
+				num = j;
+			}
+			if (min > a[j]) {
+				min = a[j];
+			}
+		}
+		for (int j = 0; j < n; j++) {
+			if (j == 0) {
+				if (max != a[j]) {
+					continue;
+				}
+			}
+			else {
+				if (max == a[j]) {
+					if (j == num) {
+					}
+					else if (j != num) {
+						for (int k = num; k < j; k++) {
+							sum += max - a[j];
+						}
+					}
+				}
+				else if ((max > a[j]) && (a[j - 1] < a[j])) {
+					sum += a[j] - a[j - 1];
+				}
+			}
+		}
+		fprintf(fp2, "%d", sum);
+	}
+}
