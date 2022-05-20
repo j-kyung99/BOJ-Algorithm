@@ -24,3 +24,4 @@ int main(void) {
 		cout << sum << '\n' << min;
 	}
 }
+
