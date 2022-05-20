@@ -26,8 +26,8 @@ int main(void) {
 			cin >> board[i][j];
 		}
 	}
-	int num = 0; // ±×¸² °³¼ö
-	int mx = 0; // °¡Àå ³ĞÀº ±×¸² ³ĞÀÌ
+	int num = 0; // ê·¸ë¦¼ ê°œìˆ˜
+	int mx = 0; // ê°€ì¥ ë„“ì€ ê·¸ë¦¼ ë„“ì´
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			if (board[i][j] != 1 || vis[i][j] == 1) continue;
